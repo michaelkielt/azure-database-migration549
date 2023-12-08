@@ -69,3 +69,42 @@ This project focuses on architecting and implementing a cloud-based database sys
 6. **Validation:**
    - Inspect data, schema, and configurations in Azure Data Studio.
    - Ensure the migration adheres to principles of data integrity.
+  
+## Part 3: Secure Database Backups on Azure Blob Storage and Development Environment Setup
+
+### Prerequisites:
+- Azure Virtual Machine for production
+- Production database successfully set up
+- Azure Blob Storage account created
+- New Azure Virtual Machine provisioned for development
+- SQL Server and SSMS installed on the development VM
+
+### Steps:
+
+1. **Secure Database Backup on Azure Blob Storage:**
+   - Generate a full backup of the production database hosted on the production VM.
+   - Store the backup file in the SQL Server Backup folder on the production VM.
+   - Configure an Azure Blob Storage account to serve as a secure online repository for database backups.
+
+2. **Upload Backup to Azure Blob Storage:**
+   - Upload the full generated backup file to the configured blob storage container.
+
+3. **Development Environment Provisioning:**
+   - Provision a new Azure Virtual Machine to serve as the development environment.
+
+4. **SQL Server and SSMS Installation on Development VM:**
+   - Install SQL Server and SQL Server Management Studio (SSMS) on the development VM to replicate the production environment.
+
+5. **Restore Database on Development Environment:**
+   - Use the backup file generated previously to restore the database onto the new "sandbox" development environment using SSMS.
+
+6. **Maintenance Plan for Periodic Backups:**
+   - Create a maintenance plan in SSMS on the development VM.
+   - Set up a periodic weekly full backup of the database to the Azure Blob Storage container.
+   - Configure SQL Server Credentials to connect to the Azure Blob Storage.
+   - Provide the Azure Storage account name and secret access key for secure access.
+
+7. **Validation:**
+   - Confirm that the maintenance plan executes periodic backups to the Azure Blob Storage container.
+
+
