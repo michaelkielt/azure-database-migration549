@@ -11,10 +11,17 @@ This project focuses on architecting and implementing a cloud-based database sys
 
 2. **Migrating to Azure SQL Database:**
    - Set up an Azure SQL Database using the Azure Portal, allowing SQL login and specifying the VM's IP address in firewall rules.
-   - Install Azure Data Studio on the VM for managing connections to both the local SQL Server and Azure SQL Database.
+   - Install Azure Data Studio on the VM to manage connections to the local SQL Server and Azure SQL Database.
    - Use the SQL Server Schema Compare extension in Azure Data Studio to compare and migrate the schema from the on-premise database to Azure SQL Database.
    - Install the Azure SQL Migration extension in Azure Data Studio to migrate data from the on-premise database to Azure SQL Database.
    - Validate the migration success by inspecting data, schema, and configurations, ensuring adherence to the principles of data integrity.
+
+3. **Secure Database Backups on Azure Blob Storage and Development Environment Setup**
+   - Generate a full backup of the production database and securely store it on Azure Blob Storage.
+   - Provision a new Azure Virtual Machine for development and replicate the production environment.
+   - Restore the production database in the development environment using the generated database backup.
+   - Configure a maintenance plan for weekly full backups of the development database to Azure Blob Storage, enhancing data security and availability.
+     
 
 ## Part 1: Establishing a Production Environment Database
 
@@ -56,11 +63,11 @@ This project focuses on architecting and implementing a cloud-based database sys
    - Install Azure Data Studio on the VM.
 
 3. **Connection Establishment:**
-   - Use Azure Data Studio to establish connections to both the local SQL Server and Azure SQL Database.
+   - Use Azure Data Studio to establish connections to the local SQL Server and Azure SQL Database.
 
 4. **Schema Migration:**
    - Install the SQL Server Schema Compare extension in Azure Data Studio.
-   - Compare and migrate the schema from the on-premise database to Azure SQL Database.
+   - Compare and migrate the schema from the on-premise database to the Azure SQL Database.
 
 5. **Data Migration:**
    - Install the Azure SQL Migration extension in Azure Data Studio.
@@ -100,7 +107,7 @@ This project focuses on architecting and implementing a cloud-based database sys
 
 6. **Maintenance Plan for Periodic Backups:**
    - Create a maintenance plan in SSMS on the development VM.
-   - Set up a periodic weekly full backup of the database to the Azure Blob Storage container.
+   - Set up a periodic weekly full database backup to the Azure Blob Storage container.
    - Configure SQL Server Credentials to connect to the Azure Blob Storage.
    - Provide the Azure Storage account name and secret access key for secure access.
 
