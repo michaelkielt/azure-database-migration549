@@ -21,6 +21,11 @@ This project focuses on architecting and implementing a cloud-based database sys
    - Provision a new Azure Virtual Machine for development and replicate the production environment.
    - Restore the production database in the development environment using the generated database backup.
    - Configure a maintenance plan for weekly full backups of the development database to Azure Blob Storage, enhancing data security and availability.
+  
+4. **Disaster Recovery Simulation:**
+   - Simulate intentional data loss in the production environment and execute the disaster recovery process to restore the database to a point before the data loss       
+     occurs. This step ensures the robustness of the system's recovery mechanisms and validates the effectiveness of having a disaster recovery strategy.
+
      
 
 ## Part 1: Establishing a Production Environment Database
@@ -113,5 +118,31 @@ This project focuses on architecting and implementing a cloud-based database sys
 
 7. **Validation:**
    - Confirm that the maintenance plan executes periodic backups to the Azure Blob Storage container.
+
+## Part 4: Disaster Recovery Simulation
+
+
+### Steps:
+
+1. **Simulating Data Loss:**
+   - Connect to the production SQL database using SQL Server Management Studio (SSMS).
+   - Execute SQL statements to remove foreign key (FK) constraints within the `Person.Address` table.
+   - Utilise a DELETE statement to remove the top 1000 records from the `Person.Address` table.
+   - Confirm the success of the data loss by reviewing the results in Azure Data Studio.
+
+2. **Initiating Database Restore:**
+   - Access the Azure portal and navigate to the homepage of the Azure SQL Database.
+   - Select the 'restore' option to initiate the database restoration process.
+
+3. **Choosing a Restore Point:**
+   - Choose a restore point that precedes the simulated data loss by selecting a time approximately 2 hours before the incident occurred.
+
+4. **Configuring Restored Database:**
+   - Specify a new database name for the restored database by appending '-restored' to the original database name.
+   - Deploy the newly restored database using the selected restore point.
+
+5. **Validation of Restoration:**
+   - Use Azure Data Studio to inspect the restored database's `Person.Address` table.
+   - Confirm that the entries previously deleted during the simulation have been successfully restored.
 
 
