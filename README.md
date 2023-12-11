@@ -31,6 +31,12 @@ This project focuses on architecting and implementing a cloud-based database sys
    - Orchestrate a planned failover to the secondary region, simulating real-world challenges.
    - Test the failover functionality and perform a tailback to revert to the primary region.
 
+6. **Microsoft Entra Directory Integration:**
+   - Enable Microsoft Entra ID authentication for the SQL server hosting the Azure production database.
+   - Set up an admin account and test admin privileges in Azure Data Studio.
+   - Create a DB reader user in Microsoft Entra ID and grant the user the `db_reader` role in Azure Data Studio.
+   - Test read-only privileges for the DB reader user by running SELECT queries and validating access denial for UPDATE queries.
+
      
 ## Part 1: Establishing a Production Environment Database
 
@@ -191,6 +197,34 @@ Implementing geo-replication to enhance database availability and simulate real-
    - After validating the failover, perform another failover to initiate a tailback.
    - Revert the system to the primary region, making the original primary database the active one again.
 
+## Part 6: Microsoft Entra Directory Integration
+
+### Objective:
+Integrate Microsoft Entra Directory with the Azure SQL Database setup to enhance access management and security. This section focuses on enabling Microsoft Entra ID authentication for the SQL server hosting the Azure production database and managing user roles effectively.
+
+### Steps:
+
+1. **Enabling Microsoft Entra ID Authentication:**
+   - Navigate to the SQL server page on the Azure portal.
+   - Under the security section, select Microsoft Entra ID.
+   - Select 'Set admin' and set an admin account for Microsoft Entra ID authentication.
+
+2. **Testing Admin Privileges:**
+   - Validate admin privileges by connecting to the primary database in Azure Data Studio.
+   - Run queries to ensure the admin account can perform administrative tasks.
+
+3. **Creating a DB Reader User:**
+   - Go to the Microsoft Entra ID page on the Azure portal.
+   - Create a new user with the username 'project-db-reader'.
+
+4. **Assigning DB Reader Role:**
+   - In Azure Data Studio, execute a statement in the primary database
+     using the credentials of the newly created user to grant the user the db-reader role.
+
+5. **Testing Read-Only Privileges:**
+   - Reconnect to the primary database with the db_reader role credentials in Azure Data Studio.
+   - Run SELECT queries to confirm read privileges.
+   - Attempt UPDATE queries to verify that write access is denied.
 
 
 
