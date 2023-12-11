@@ -26,8 +26,12 @@ This project focuses on architecting and implementing a cloud-based database sys
    - Simulate intentional data loss in the production environment and execute the disaster recovery process to restore the database to a point before the data loss       
      occurs. This step ensures the robustness of the system's recovery mechanisms and validates the effectiveness of having a disaster recovery strategy.
 
-     
+5. **Geo-Replication and Failover:**
+   - Implement geo-replication for the restored production Azure SQL Database, creating a synchronised replica of the primary database.
+   - Orchestrate a planned failover to the secondary region, simulating real-world challenges.
+   - Test the failover functionality and perform a tailback to revert to the primary region.
 
+     
 ## Part 1: Establishing a Production Environment Database
 
 ### Prerequisites:
@@ -144,5 +148,38 @@ This project focuses on architecting and implementing a cloud-based database sys
 5. **Validation of Restoration:**
    - Use Azure Data Studio to inspect the restored database's `Person.Address` table.
    - Confirm that the entries previously deleted during the simulation have been successfully restored.
+
+## Part 5: Geo-Replication and Failover
+
+### Objective:
+Implementing geo-replication to enhance database availability and simulate real-world challenges by orchestrating a planned failover to a secondary region. This part demonstrates the establishment of a synchronised replica of the primary database and validates the failover capabilities to ensure system resilience.
+
+### Steps:
+
+1. **Setting Up Geo-Replication:**
+   - Navigate to the Azure portal and access the SQL server hosting the primary production database.
+   - Create a synchronised replica (geo-replica) of the primary database.
+   - Configure the new SQL server to be geographically distant, in this case by selecting a region such as US East.
+   - Choose SQL authentication as the authentication method and deploy the geo-replica.
+
+2. **Simulating Real-World Challenges - Planned Failover:**
+   - Go to the SQL server page on the Azure portal.
+   - Create a new failover group for the primary server hosting the production database.
+   - Select the newly provisioned geo-replica server as the server in the failover group.
+   - Deploy the failover group successfully.
+
+3. **Testing Failover:**
+   - Validate the failover by selecting the resource (failover group) and choosing 'failover.'
+   - Confirm that the secondary database is now promoted to the primary database.
+
+4. **Functional Validation:**
+   - Test the functionality of the failover by connecting to the database.
+   - Run queries on Azure Data Studio to ensure that the secondary database is operational and functions correctly.
+
+5. **Tailback for Reversion to Primary Region:**
+   - After validating the failover, perform another failover to initiate a tailback.
+   - Revert the system to the primary region, making the original primary database the active one again.
+
+
 
 
