@@ -40,6 +40,9 @@ This project focuses on architecting and implementing a cloud-based database sys
 - SQL Server and SSMS installed on the virtual machine
 - Backup file (`.bak`) for the production database
 
+### Objective:
+Establish a production database by provisioning an Azure Virtual Machine, installing SQL Server, and configuring SQL Server Management Studio (SSMS). Create the production database using SSMS and a backup file (.bak), ensuring a secure and well-configured environment.
+
 ### Steps:
 1. **Azure VM Setup:**
    - Provision an Azure Virtual Machine.
@@ -62,6 +65,9 @@ This project focuses on architecting and implementing a cloud-based database sys
 - Azure SQL Database created using the Azure Portal
 - Azure Data Studio installed on the VM
 - SQL Server Schema Compare extension and Azure SQL Migration extension installed in Azure Data Studio
+
+### Objective:
+Migrate to Azure SQL Database by creating an instance using the Azure Portal. Allow SQL login, specify the VM's IP address in firewall rules, and install Azure Data Studio on the VM. Use the SQL Server Schema Compare and Azure SQL Migration extensions in Azure Data Studio to migrate schema and data from the on-premise database to Azure SQL Database. Validate the migration's success by inspecting data, schema, and configurations.
 
 ### Steps:
 1. **Azure SQL Database Setup:**
@@ -95,6 +101,9 @@ This project focuses on architecting and implementing a cloud-based database sys
 - New Azure Virtual Machine provisioned for development
 - SQL Server and SSMS installed on the development VM
 
+### Objective:
+Securely back up the production database on Azure Blob Storage by generating a full backup and uploading it to a configured container. Provision a new Azure Virtual Machine for development, install SQL Server and SSMS, and restore the production database using the generated backup. Set up a maintenance plan for weekly full database backups to Azure Blob Storage, ensuring data security and availability. Confirm the successful execution of the maintenance plan for periodic backups.
+
 ### Steps:
 
 1. **Secure Database Backup on Azure Blob Storage:**
@@ -125,6 +134,8 @@ This project focuses on architecting and implementing a cloud-based database sys
 
 ## Part 4: Disaster Recovery Simulation
 
+### Objective:
+Simulating a disaster scenario to test the robustness of the system's recovery process. In this simulation, intentional data loss was induced in the production environment, and the recovery process was executed to restore the system to a point before the data loss occurred.
 
 ### Steps:
 
