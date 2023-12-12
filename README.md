@@ -1,4 +1,4 @@
-# Project README: Azure Database Migration
+# Azure Database Migration
 
 ## Overview
 
