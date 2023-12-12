@@ -226,5 +226,6 @@ Integrate Microsoft Entra Directory with the Azure SQL Database setup to enhance
    - Run SELECT queries to confirm read privileges.
    - Attempt UPDATE queries to verify that write access is denied.
 
-
+### Conclusion
+In the culmination of this comprehensive Azure Database Migration project, we have successfully navigated through multiple key phases, demonstrating a robust and well-architected cloud-based database system on Microsoft Azure. The project's structured approach has covered critical aspects of database management, migration, disaster recovery, geo-replication, and integration with Microsoft Entra Directory. Each part of the project has contributed to the overall goal of establishing a resilient and efficient database ecosystem.
 
